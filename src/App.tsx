@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import './App.css'
 import Nav from './components/Nav';
 
@@ -7,12 +7,34 @@ import { ThemeContext, type ThemeContextType } from './context/ThemeContext';
 
 function App() {
   //const [count, setCount] = useState(0)
-  const [theme, setTheme] = useState<ThemeContextType>("light");
+  //const {currentTheme} = useContext(ThemeContext);
+  
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
+  console.log(theme)
+  
+  const changeCurrentTheme = (newTheme: 'light' | 'dark') => {
+    setTheme(newTheme)
+    localStorage.setItem('theme', newTheme)
+  }
+
+  useEffect(() => {
+    if(theme==="dark") {
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+    }
+  }, [theme])
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <Nav name="Ryan" />
-      <h1>Hello World</h1>
+    <ThemeContext.Provider value={{currentTheme: theme, changeCurrentTheme}}>
+      <main className='relative h-screen flex items-center justify-center overflow-x-hidden bg-white text-slate-900 antialiased min-h-screen dark:text-white dark:bg-slate-900'>
+        <div className='container pt-32 max-w-7xl w-full mx-auto h-full'>
+          <div className='h-full gap-6 flex flex-col justify-start lg:justify-center items-center lg:items-start'>
+            <Nav name="Ryan" />
+            <h1>Hello World</h1>
+          </div>
+        </div>
+      </main>
       
     </ThemeContext.Provider>
   )
