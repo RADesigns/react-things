@@ -1,18 +1,20 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-const Nav = props => {
-  return (
-    <>
-        <nav>
-            <div className='container'>
-                Container
-            </div>
-        </nav>
-    </>
-  )
+type NavPropsType = {
+    name: string
+  };
+
+const Nav: React.FC<NavPropsType> = props => {
+    const name = props.name
+    return (
+        <>
+            <nav>
+                <div className='container'>
+                    Container {name}
+                </div>
+            </nav>
+        </>
+    )
 }
-
-Nav.propTypes = {}
 
 export default Nav

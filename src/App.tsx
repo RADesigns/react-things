@@ -11,7 +11,7 @@ function App() {
 
   return (
     <ThemeContext.Provider value={theme}>
-      <Nav />
+      <Nav name="Ryan" />
       <h1>Hello World</h1>
       
     </ThemeContext.Provider>
