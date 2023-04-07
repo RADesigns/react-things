@@ -28,7 +28,7 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{currentTheme: theme, changeCurrentTheme}}>
-      <main className='relative h-screen flex items-center justify-center overflow-x-hidden bg-white text-slate-950 antialiased min-h-screen dark:text-white dark:bg-slate-950'>
+      <main className='relative text-lg h-screen flex items-center justify-center overflow-x-hidden bg-white text-zinc-950 antialiased min-h-screen dark:text-white dark:bg-zinc-950'>
         <div className='container pt-32 max-w-7xl w-full mx-auto h-full'>
           <div className='h-full gap-6 flex flex-col justify-start lg:justify-center items-center lg:items-start'>
             <Nav name="Ryan" />
